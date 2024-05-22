@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #000;
-            margin: 0;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
-        canvas {
-            background-color: #1a1a1a;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unique Random Number Generator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
 </head>
 <body>
-    <div>
-        <canvas id="gameCanvas" width="600" height="400"></canvas>
-        <div id="score" style="text-align: center; font-size: 24px;">Score: 0</div>
-    </div>
-    <script src="snake.js"></script>
+  <h1>Unique Random Number Generator</h1>
+  <button onclick="generateRandomNumber()">Generate Random Number</button>
+  <p id="randomNumber"></p>
+
+  <script>
+    // Array to store numbers 1 to 25
+    var numbers = Array.from({length: 25}, (_, index) => index + 1);
+    
+    function generateRandomNumber() {
+      if (numbers.length === 0) {
+        document.getElementById("randomNumber").textContent = "All numbers have been generated.";
+        return;
+      }
+      
+      // Generate random index to select a number from the array
+      var randomIndex = Math.floor(Math.random() * numbers.length);
+      
+      // Get and remove the selected number from the array
+      var randomNumber = numbers.splice(randomIndex, 1)[0];
+      
+      // Display the generated random number
+      document.getElementById("randomNumber").textContent = "Random Number: " + randomNumber;
+    }
+  </script>
 </body>
 </html>
